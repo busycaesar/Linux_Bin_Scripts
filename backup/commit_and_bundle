@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Check if directory path is passed as argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <project_directory> [bundle_output_directory]"
+  exit 1
+fi
+
+PROJECT_DIR="$1"
+OUTPUT_DIR="${2:-$HOME/backup}"  # Use second argument or default to ~/backup
+
+# Check if the provided project directory exists
+if [ ! -d "$PROJECT_DIR" ]; then
+  echo "Directory $PROJECT_DIR does not exist!"
+  exit 1
+fi
+
+# Create output directory if it doesn't exist
+mkdir -p "$OUTPUT_DIR"
+
+# Navigate to the project directory
+cd "$PROJECT_DIR" || exit
+
+# Check if the directory is a git repository
+if [ ! -d ".git" ]; then
+  echo "This is not a Git repository: $PROJECT_DIR"
+  exit 1
+fi
+
+# Commit all changes
+git add -A
+
+if git diff --cached --quiet; then
+  echo "No changes to commit"
+else
+  COMMIT_MESSAGE="Automated commit on $(date)"
+  git commit -m "$COMMIT_MESSAGE"
+fi
+
+# Create a bundle of the repository
+BUNDLE_NAME="$(basename "$PROJECT_DIR").bundle"
+git bundle create "$BUNDLE_NAME" --all
+
+# Move the bundle to the output directory
+mv -f "$BUNDLE_NAME" "$OUTPUT_DIR/"
+
+# Print success message
+echo "Commit made and bundle created at: $OUTPUT_DIR/$BUNDLE_NAME"
