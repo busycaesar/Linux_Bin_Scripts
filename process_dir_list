@@ -2,12 +2,12 @@
 
 # Check for required arguments
 if [ -z "$1" ] || [ -z "$2" ]; then
-  echo "Usage: $0 <dir_list_file> <commit_script_path>"
+  echo "Usage: $0 <script_path> <dir_list_file>"
   exit 1
 fi
 
-DIR_LIST_FILE="$1"
-SCRIPT="$2"
+DIR_LIST_FILE="$2"
+SCRIPT="$1"
 
 # Check if the directory list file exists
 if [ ! -f "$DIR_LIST_FILE" ]; then

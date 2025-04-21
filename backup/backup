@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create bundles of the list of directories and move them to ~/backup directory.
-~/bin/backup/process_dir_list ~/backup/dir_list ~/bin/backup/commit_and_bundle
+~/bin/process_dir_list ~/bin/backup/commit_and_bundle ~/bin/backup/dir_list
 
 # Copy the bundles to external drive.
 cp ~/backup/* '/run/media/busycaesar/DEV SHAH/MachineBackup/'

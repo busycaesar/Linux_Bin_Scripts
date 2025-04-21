@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Check if the directory path argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <directory_path>"
+  exit 1
+fi
+
+DIR_PATH="$1"
+
+# Check if the provided path is a valid directory
+if [ ! -d "$DIR_PATH" ]; then
+  echo "Error: $DIR_PATH is not a valid directory."
+  exit 1
+fi
+
+# Delete all files in the directory, but not the directory itself
+find "$DIR_PATH" -type f -exec rm -f {} \;
+
+echo "All files have been deleted from $DIR_PATH."

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Delete all the files from the directory.
+~/bin/process_dir_list ~/bin/clean_temp_dirs/delete_temp_files ~/bin/clean_temp_dirs/dir_list
