@@ -6,11 +6,43 @@ This repository contains a collection of general-purpose utility bash scripts. T
 
 ## Tech Stack
 
-![Image Alt](https://skillicons.dev/icons?i=bash)
+![Tech Stack](https://skillicons.dev/icons?i=bash)
 
 ## Get Started
 
-[In Development]
+To get started with the project repository, follow the steps below:
+
+1. Clone the Repository
+
+First, clone the repository to your `~/bin` directory (or any preferred location):
+
+```sh
+git clone https://github.com/busycaesar/linux-bin-scripts.git ~/bin
+```
+
+2. Set Up Cron Jobs (Optional)
+
+For automating the execution of scripts, you can schedule them using cron jobs. To set up a cron job, open the crontab editor:
+
+```sh
+crontab -e
+```
+
+Then, add a line to run the script you want to automate at the specified time. For example, to run the backup script every day at midnight:
+
+```sh
+0 0 \* \* \* /bin/bash ~/bin/backup
+```
+
+You can set the cron job to run any script from the repository by adjusting the script name and schedule as needed.
+
+3. Run the Scripts
+
+Now, you can run the scripts manually or via scheduled cron jobs. To run a script manually, simply execute it with:
+
+```sh
+~/bin/script_name
+```
 
 ## List of Scripts
 
