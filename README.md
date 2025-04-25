@@ -22,7 +22,7 @@ This repository contains a collection of general-purpose utility bash scripts. T
 
   - `backup`: The purpose of this script is to automate the process of creating backup bundles of specified directories and moving them to an external drive. It first calls the `commit_and_bundle` script to create bundles of directories listed in a file and stores them in the `~/backup` directory. Then, it copies all the generated bundles to an external drive for safe storage.
 
-- ## `clean_temp_dirs`
+- ### `clean_temp_dirs`
 
   - `delete_temp_files`: This script is designed to delete all files within a specified directory while leaving the directory structure intact. It takes a directory path as input, and then removes all files inside that directory. This script helps in cleaning up directories without removing the directories themselves.
 
