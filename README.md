@@ -18,6 +18,16 @@ This repository contains a collection of general-purpose utility bash scripts. T
 
 - ### `backup`
 
+  To use this functionality, you need to create a `.env.config` file the contains the following configuration variables.
+
+  ```env
+  # Absolute path to the directory where the backup bundles will be stored.
+  DEFAULT_OUTPUT="path/to/dir"
+
+  # Absolute path to the directory on an external drive where the backup bundles will be transferred from DEFAULT_OUTPUT.
+  EXTERNAL_DRIVE_LOCATION="path/to/external/drive"
+  ```
+
   - `commit_and_bundle`: This script accepts a project directory (and optionally, an output directory) as input. It commits any uncommitted changes in the directory, creates a Git bundle file, containing the entire repository history, and moves the bundle to the specified output directory (defaulting to `~/backup`). It is intended to ensure that important system directories are under version control, and bundled into portable .bundle files.
 
   - `backup`: The purpose of this script is to automate the process of creating backup bundles of specified directories and moving them to an external drive. It first calls the `commit_and_bundle` script to create bundles of directories listed in a file and stores them in the `~/backup` directory. Then, it copies all the generated bundles to an external drive for safe storage.
