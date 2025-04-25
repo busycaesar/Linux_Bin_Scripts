@@ -3,5 +3,17 @@
 # Create bundles of the list of directories and move them to ~/backup directory.
 ~/bin/process_dir_list ~/bin/backup/commit_and_bundle ~/bin/backup/dir_list
 
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+CONFIG_FILE_NAME=".env.config"
+CONFIG_FILE_LOCATION="$SCRIPT_DIR/$CONFIG_FILE_NAME"
+
+# Check if the configuration file exists
+if [ -f "$CONFIG_FILE_LOCATION" ]; then
+  source "$CONFIG_FILE_LOCATION"
+else
+  echo "$CONFIG_FILE_NAME not found! Please create a config file in the current directory."
+  exit 1
+fi
+
 # Copy the bundles to external drive.
-cp ~/backup/* '/run/media/busycaesar/DEV SHAH/MachineBackup/'
+cp "${DEFAULT_OUTPUT}/"* "${EXTERNAL_DRIVE_LOCATION}"

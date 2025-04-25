@@ -2,12 +2,22 @@
 
 # Check if directory path is passed as argument
 if [ -z "$1" ]; then
-  echo "Usage: $0 <project_directory> [bundle_output_directory]"
+  echo "Usage: $0 <directory>"
+  exit 1
+fi
+
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+CONFIG_FILE_LOCATION="$SCRIPT_DIR/.env.config"
+
+# Check if the configuration file exists
+if [ -f "$CONFIG_FILE_LOCATION" ]; then
+  source "$CONFIG_FILE_LOCATION"
+else
+  echo "config not found! Please create a config file in the current directory. For more details, visit: https://github.com/busycaesar/Linux_Bin_Scripts/blob/Master/backup/config"
   exit 1
 fi
 
 PROJECT_DIR="$1"
-OUTPUT_DIR="${2:-$HOME/backup}"  # Use second argument or default to ~/backup
 
 # Check if the provided project directory exists
 if [ ! -d "$PROJECT_DIR" ]; then
@@ -16,7 +26,7 @@ if [ ! -d "$PROJECT_DIR" ]; then
 fi
 
 # Create output directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR"
+mkdir -p "$DEFAULT_OUTPUT"
 
 # Navigate to the project directory
 cd "$PROJECT_DIR" || exit
@@ -42,7 +52,7 @@ BUNDLE_NAME="$(basename "$PROJECT_DIR").bundle"
 git bundle create "$BUNDLE_NAME" --all
 
 # Move the bundle to the output directory
-mv -f "$BUNDLE_NAME" "$OUTPUT_DIR/"
+mv -f "$BUNDLE_NAME" "$DEFAULT_OUTPUT/"
 
 # Print success message
-echo "Commit made and bundle created at: $OUTPUT_DIR/$BUNDLE_NAME"
+echo "Commit made and bundle created at: $DEFAULT_OUTPUT/$BUNDLE_NAME"
