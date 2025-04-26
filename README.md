@@ -31,7 +31,7 @@ crontab -e
 Then, add a line to run the script you want to automate at the specified time. For example, to run the backup script every day at midnight:
 
 ```sh
-0 0 \* \* \* /bin/bash ~/bin/backup
+0 0 * * * /bin/bash ~/bin/backup
 ```
 
 You can set the cron job to run any script from the repository by adjusting the script name and schedule as needed.
