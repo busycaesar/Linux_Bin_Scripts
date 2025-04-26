@@ -12,7 +12,7 @@ This repository contains a collection of general-purpose utility bash scripts. T
 
 To get started with the project repository, follow the steps below:
 
-1. Clone the Repository
+### 1. Clone the Repository
 
 First, clone the repository to your `~/bin` directory (or any preferred location):
 
@@ -20,7 +20,7 @@ First, clone the repository to your `~/bin` directory (or any preferred location
 git clone https://github.com/busycaesar/linux-bin-scripts.git ~/bin
 ```
 
-2. Set Up Cron Jobs (Optional)
+### 2. Set Up Cron Jobs (Optional)
 
 For automating the execution of scripts, you can schedule them using cron jobs. To set up a cron job, open the crontab editor:
 
@@ -36,7 +36,7 @@ Then, add a line to run the script you want to automate at the specified time. F
 
 You can set the cron job to run any script from the repository by adjusting the script name and schedule as needed.
 
-3. Run the Scripts
+### 3. Run the Scripts
 
 Now, you can run the scripts manually or via scheduled cron jobs. To run a script manually, simply execute it with:
 
